@@ -6,11 +6,16 @@
   float: left;
   padding: 10px;
   border: 2px solid black;
+  height: 100%;
 }
 
 .left {
   width: 25%;
   padding: 5px;
+}
+
+.main-head {
+  grid-area: header;
 }
 
 .right {
