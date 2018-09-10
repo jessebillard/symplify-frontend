@@ -3,7 +3,8 @@ import {
     CREATE_NOTE,
     UPDATE_NOTE,
     DELETE_NOTES,
-    SELECT_NOTE
+    SELECT_NOTE,
+    EDIT_NOTE
 } from './types'
 import { NotesAdapter } from '../adapters/index'
 
@@ -59,5 +60,12 @@ export const selectNote = (noteTitle) => {
     return {
         type: SELECT_NOTE,
         noteTitle
+    }
+}
+
+export const editNote = (content) => {
+    return {
+        type: EDIT_NOTE,
+        content
     }
 }

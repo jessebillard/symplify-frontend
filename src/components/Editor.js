@@ -3,6 +3,8 @@ import { Editor, EditorState, RichUtils } from 'draft-js'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 import classNames from 'classnames'
+import { connect } from 'react-redux'
+import { editNote } from '../actions/index'
 
 
 class NoteEditor extends React.Component {
@@ -48,9 +50,10 @@ class NoteEditor extends React.Component {
     // }
 
     handleChange = (html) => {
-        this.setState({
-            editorHTML: html
-        })
+        // this.setState({
+        //     editorHTML: html
+        // })
+        this.props.editNote(html)
     }
 
     render() {
@@ -68,8 +71,8 @@ class NoteEditor extends React.Component {
                     /> */}
                     <ReactQuill 
                         theme='snow'
-                        onChange={this.handleChange}
-                        value={this.state.editorHTML}
+                        onChange={this.handleChange}                        
+                        value={this.props.selectedNoteContent}
                         modules={Editor.modules}
                         formats={Editor.formats}
                         bounds={'.app'}
@@ -80,8 +83,14 @@ class NoteEditor extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        selectedNoteContent: state.selectedNote.content
+    }
+}
               
-export default NoteEditor
+export default connect(mapStateToProps, { editNote })(NoteEditor)
 
     
 

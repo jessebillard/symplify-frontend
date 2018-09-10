@@ -31,6 +31,13 @@ export default (state = {
                 ...state,
                 selectedNote: note
             }
+        case 'EDIT_NOTE':
+            const newNote = Object.assign({}, state.selectedNote)
+            newNote.content = action.content
+            return {
+                ...state,
+                selectedNote: newNote
+            }
         default:
             return state
     }
