@@ -4,6 +4,7 @@ import NoteList from './components/NoteList';
 import NoteEditor from './components/Editor';
 import { connect } from 'react-redux';
 import { getNotes } from './actions/index'
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
 

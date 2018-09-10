@@ -26,3 +26,15 @@
 #new-note-button {
   margin-left: 100px;
 }
+
+delete {
+  float: right;
+}
+
+/* .delete-note {
+  margin-left: 25px;
+} */
+
+/* #delete-note-button {
+  margin-left: 10px;
+} */
