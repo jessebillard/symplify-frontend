@@ -6,7 +6,7 @@ export default (state = {
         case 'GET_NOTES':
             return {  
                 ...state,              
-                notes: [action.notes]
+                notes: action.notes
             }
         case 'CREATE_NOTE':
             return {

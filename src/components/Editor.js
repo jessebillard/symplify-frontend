@@ -1,5 +1,7 @@
 import React from 'react'
 import { Editor, EditorState, RichUtils } from 'draft-js'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 import classNames from 'classnames'
 
 
@@ -7,41 +9,48 @@ class NoteEditor extends React.Component {
     constructor() {
         super()
         this.state = {
-            editorState: EditorState.createEmpty()
+            // editorState: EditorState.createEmpty()
+            editorHTML: ''
         }
     }
 
-    onChange = (editorState) => {
+    // onChange = (editorState) => {
+    //     this.setState({
+    //         editorState
+    //     })
+    // }
+
+    // handleKeyCommand = (command) => {
+    //     const newState = RichUtils.handleKeyCommand(this.state.editorState, command)
+    //     if (newState) {
+    //         this.onChange(newState)
+    //         return 'handled'
+    //     }
+    //     return 'not handled'
+    // }
+
+    // onBoldClick = () => {
+    //     this.onChange(RichUtils.toggleInlineStyle(
+    //         this.state.editorState, 'BOLD')
+    //     )
+    // }
+    
+    // onItalicClick = () => {
+    //     this.onChange(RichUtils.toggleInlineStyle(
+    //         this.state.editorState, 'ITALIC')
+    //     )
+    // }
+    
+    // onUnderlineClick = () => {
+    //     this.onChange(RichUtils.toggleInlineStyle(
+    //         this.state.editorState, 'UNDERLINE')
+    //     )
+    // }
+
+    handleChange = (html) => {
         this.setState({
-            editorState
+            editorHTML: html
         })
-    }
-
-    handleKeyCommand = (command) => {
-        const newState = RichUtils.handleKeyCommand(this.state.editorState, command)
-        if (newState) {
-            this.onChange(newState)
-            return 'handled'
-        }
-        return 'not handled'
-    }
-
-    onBoldClick = () => {
-        this.onChange(RichUtils.toggleInlineStyle(
-            this.state.editorState, 'BOLD')
-        )
-    }
-    
-    onItalicClick = () => {
-        this.onChange(RichUtils.toggleInlineStyle(
-            this.state.editorState, 'ITALIC')
-        )
-    }
-    
-    onUnderlineClick = () => {
-        this.onChange(RichUtils.toggleInlineStyle(
-            this.state.editorState, 'UNDERLINE')
-        )
     }
 
     render() {
@@ -51,11 +60,20 @@ class NoteEditor extends React.Component {
                 <button onClick={this.onItalicClick}><em>I</em></button>
                 <button onClick={this.onUnderlineClick}>U</button> */}
                 <div className={classNames('col', 'right')}>
-                    <h1>Editor</h1>
-                    <Editor 
+                    {/* <h1>Editor</h1> */}
+                    {/* <Editor 
                         editorState={this.state.editorState} 
                         onChange={this.onChange}
                         handleKeyCommand={this.handleKeyCommand}
+                    /> */}
+                    <ReactQuill 
+                        theme='snow'
+                        onChange={this.handleChange}
+                        value={this.state.editorHTML}
+                        modules={Editor.modules}
+                        formats={Editor.formats}
+                        bounds={'.app'}
+                        placeholder='type yo stuff here foo'
                     />
                 </div>
             </div>

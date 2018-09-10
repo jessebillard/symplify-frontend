@@ -15,8 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Symplify</h1>
-        <div className="grid">
-          <header className="main-head">The header</header>
+        <div className="grid">          
           <NoteList />
           <NoteEditor />
         </div>

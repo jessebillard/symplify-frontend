@@ -22,3 +22,7 @@
   width: 75%;
   padding: 5px;
 }
+
+#new-note-button {
+  margin-left: 100px;
+}
