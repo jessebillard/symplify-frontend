@@ -7,7 +7,7 @@ class NoteList extends React.Component {
         return (
             <div className={classNames('col', 'left')}>
                 <ul>
-                    <li>List item</li>
+                    
                 </ul>
             </div>
         )
