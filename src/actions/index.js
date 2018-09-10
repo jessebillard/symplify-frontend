@@ -2,7 +2,8 @@ import {
     GET_NOTES,
     CREATE_NOTE,
     UPDATE_NOTE,
-    DELETE_NOTES
+    DELETE_NOTES,
+    SELECT_NOTE
 } from './types'
 import { NotesAdapter } from '../adapters/index'
 
@@ -51,5 +52,12 @@ export const deleteNote = () => {
                     note
                 })
             })
+    }
+}
+
+export const selectNote = (noteTitle) => {
+    return {
+        type: SELECT_NOTE,
+        noteTitle
     }
 }

@@ -1,6 +1,6 @@
 export default (state = {
     notes: [], 
-    displayedNote: ''
+    selectedNote: ''
 }, action) => {
     switch (action.type) {
         case 'GET_NOTES':
@@ -11,12 +11,12 @@ export default (state = {
         case 'CREATE_NOTE':
             return {
                 ...state,
-                displayedNote: action.note
+                selectedNote: action.note
             }
         case 'UPDATE_NOTE':
             return {
                 ...state,
-                displayedNote: action.note            
+                selectedNote: action.note            
             }
         case 'DELETE_NOTES':
             // most likely need to change this filter method if user selects more than 1 note to delete
@@ -24,6 +24,12 @@ export default (state = {
             return {
                 ...state,
                 notes: filteredNotes
+            }
+        case 'SELECT_NOTE':
+            const note = state.notes.find(note => note.title === action.noteTitle)
+            return {
+                ...state,
+                selectedNote: note
             }
         default:
             return state
