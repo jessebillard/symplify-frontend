@@ -10,6 +10,7 @@ export class NotesAdapter {
     static createNote(data) {
         const options = {        
             method: 'POST',
+            // using FormData and don't need to use these headers
             // headers: {
             //     'Content-Type': 'application/json'
             // },                
@@ -22,6 +23,7 @@ export class NotesAdapter {
     static updateNote(id, data) {
         const options = {
             method: 'PATCH',
+            // using FormData and don't need to use these headers
             headers: {
                 'Content-Type': 'application/json'
             },

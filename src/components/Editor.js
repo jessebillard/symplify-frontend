@@ -4,8 +4,8 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 import classNames from 'classnames'
 import { connect } from 'react-redux'
-import { editNote } from '../actions/index'
-
+import { editNote, updateNote } from '../actions/index'
+import debounce from 'lodash/debounce';
 
 class NoteEditor extends React.Component {
     constructor() {
@@ -16,44 +16,11 @@ class NoteEditor extends React.Component {
         }
     }
 
-    // onChange = (editorState) => {
-    //     this.setState({
-    //         editorState
-    //     })
-    // }
-
-    // handleKeyCommand = (command) => {
-    //     const newState = RichUtils.handleKeyCommand(this.state.editorState, command)
-    //     if (newState) {
-    //         this.onChange(newState)
-    //         return 'handled'
-    //     }
-    //     return 'not handled'
-    // }
-
-    // onBoldClick = () => {
-    //     this.onChange(RichUtils.toggleInlineStyle(
-    //         this.state.editorState, 'BOLD')
-    //     )
-    // }
-    
-    // onItalicClick = () => {
-    //     this.onChange(RichUtils.toggleInlineStyle(
-    //         this.state.editorState, 'ITALIC')
-    //     )
-    // }
-    
-    // onUnderlineClick = () => {
-    //     this.onChange(RichUtils.toggleInlineStyle(
-    //         this.state.editorState, 'UNDERLINE')
-    //     )
-    // }
-
     handleChange = (html) => {
-        // this.setState({
-        //     editorHTML: html
-        // })
-        this.props.editNote(html)
+        if (this.props.selectedNoteId) {
+            this.props.editNote(html)
+            setTimeout(this.props.updateNote(this.props.selectedNoteId, this.props.selectedNoteContent), 3000)
+        }
     }
 
     render() {
@@ -91,11 +58,12 @@ const mapStateToProps = (state) => {
         }
     }
     return {
+        selectedNoteId: state.selectedNote.id,
         selectedNoteContent: state.selectedNote.content
     }
 }
               
-export default connect(mapStateToProps, { editNote })(NoteEditor)
+export default connect(mapStateToProps, { editNote, updateNote })(NoteEditor)
 
     
 

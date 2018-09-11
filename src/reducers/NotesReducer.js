@@ -10,22 +10,24 @@ export default (state = {
             }
         case 'CREATE_NOTE':            
             return {
-                ...state,
+                notes: [action.note, ...state.notes],
                 selectedNote: action.note
             }
         case 'UPDATE_NOTE':
+            // console.log(action.note)
+            const updatedNotes = state.notes.filter(note => note.id !== parseInt(action.note.id))
+            console.log("update", updatedNotes)
+            updatedNotes.push(action.note)
             return {
                 ...state,
-                selectedNote: action.note            
+                notes: updatedNotes          
             }
         case 'DELETE_NOTE':
             // most likely need to change this filter method if user selects more than 1 note to delete            
             // debugger
+            console.log("delete", action.deletedNoteId)
             const filteredNotes = state.notes.filter(note => note.id !== parseInt(action.deletedNoteId.id))
-            // state.notes.forEach(note => console.log(typeof note.id))
-
-            // console.log(filteredNotes)
-            // console.log(typeof action.deletedNoteId.id)
+            
             if (state.selectedNote.id === parseInt(action.deletedNoteId.id)) {
                 return {
                     notes: filteredNotes,

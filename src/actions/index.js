@@ -32,9 +32,9 @@ export const createNote = (data) => {
     }
 }
 
-export const updateNote = () => {
+export const updateNote = (id, data) => {
     return dispatch => {
-        NotesAdapter.updateNote()
+        NotesAdapter.updateNote(id, data)
             .then(note => {
                 dispatch({
                     type: UPDATE_NOTE,
@@ -44,8 +44,7 @@ export const updateNote = () => {
     }
 }
 
-export const deleteNote = (id) => {
-    // debugger;
+export const deleteNote = (id) => {    
     return dispatch => {
         NotesAdapter.deleteNote(id)
             .then(deletedNoteId => {
