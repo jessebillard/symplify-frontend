@@ -21,15 +21,32 @@ class Note extends React.Component {
               float: 'right',              
             }
           };
-        return (                            
-            <Segment clearing onClick={this.handleClick}>
-                <Header floated='left' as='h6'>{this.props.title}</Header> 
-                <Button onClick={this.handleDeleteClick} icon style={inlineStyle.button}>
-                    <Icon name='trash alternate' className="delete"/>                
-                </Button>           
-            </Segment>                    
-        )
+        if (this.props.id === this.props.selectedNoteId) {
+            return (
+                <Segment clearing tertiary onClick={this.handleClick}>
+                    <Header floated='left' as='h6'>{this.props.title}</Header> 
+                    <Button onClick={this.handleDeleteClick} icon style={inlineStyle.button}>
+                        <Icon name='trash alternate' className="delete"/>                
+                    </Button>           
+                </Segment> 
+            )
+        } else {
+            return (                            
+                <Segment clearing onClick={this.handleClick}>
+                    <Header floated='left' as='h6'>{this.props.title}</Header> 
+                    <Button onClick={this.handleDeleteClick} icon style={inlineStyle.button}>
+                        <Icon name='trash alternate' className="delete"/>                
+                    </Button>           
+                </Segment>                    
+            )
+        }
     }
 }
 
-export default connect(null, { selectNote, deleteNote })(Note)
+const mapStateToProps = (state) => {
+    return {
+        selectedNoteId: state.selectedNote.id
+    }
+}
+
+export default connect(mapStateToProps, { selectNote, deleteNote })(Note)

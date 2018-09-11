@@ -19,7 +19,7 @@ class NoteEditor extends React.Component {
     handleChange = (html) => {
         if (this.props.selectedNoteId) {
             this.props.editNote(html)
-            setTimeout(this.props.updateNote(this.props.selectedNoteId, this.props.selectedNoteContent), 3000)
+            setTimeout(this.props.updateNote(this.props.selectedNoteId, this.props.selectedNoteContent), 1000)
         }
     }
 
