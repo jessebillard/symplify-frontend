@@ -11,7 +11,8 @@ class NoteList extends React.Component {
         super()
         this.state = {
             modalOpen: false,
-            newNoteTitle: ''
+            newNoteTitle: '',
+            searchInput: ''
         }
     }
 
@@ -36,6 +37,12 @@ class NoteList extends React.Component {
         }, () => console.log(this.state))
     }
 
+    handleSearch = (e) => {
+        this.setState({
+            searchInput: e.target.value
+        }, () => console.log(this.state))
+    }
+
     render() {        
         const inlineStyle = {
             button : {
@@ -53,20 +60,21 @@ class NoteList extends React.Component {
                         <Button positive onClick={this.closeModal} icon='checkmark' labelPosition='right' content='Got it!' />
                     </Modal.Actions>                                    
                 </Modal> 
-                <div className={classNames('col', 'left')}>
-                    {/* <input type="text" placeholder="search" /> */}
-                    <Input icon='search' placeholder='Search...' />
+                <div className={classNames('col', 'left')}>                    
+                    <Input icon='search' onChange={this.handleSearch} placeholder='Search...' />
                     <Button icon style={inlineStyle.button} onClick={this.openModal}>
                         <Icon name='plus' />
-                    </Button>
-                    {/* <button id="new-note-button">New Note</button> */}
-                    {/* <ul> */}
-                        {this.props.notes.map((note, index) => 
-                            // <li key={index}>
-                                <Note key={index} id={note.id} title={note.title} content={note.content}/>
-                            // </li> 
-                        )}                    
-                    {/* </ul> */}
+                    </Button>                   
+                    {this.props.notes.map((note, index) => {
+                        if (this.state.searchInput) {
+                            if (note.title.toLowerCase().includes(this.state.searchInput.toLowerCase())) {                                
+                                return <Note key={index} id={note.id} title={note.title} content={note.content}/>
+                            }
+                        } else {
+                            return <Note key={index} id={note.id} title={note.title} content={note.content}/>
+                        }
+                    }
+                    )}                                        
                 </div>
             </div>
         )

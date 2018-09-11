@@ -16,8 +16,8 @@ export default (state = {
         case 'UPDATE_NOTE':
             // console.log(action.note)
             const updatedNotes = state.notes.filter(note => note.id !== parseInt(action.note.id))
-            console.log("update", updatedNotes)
-            updatedNotes.push(action.note)
+            // console.log("update", updatedNotes)
+            updatedNotes.unshift(action.note)
             return {
                 ...state,
                 notes: updatedNotes          

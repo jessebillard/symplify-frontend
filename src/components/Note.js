@@ -23,7 +23,7 @@ class Note extends React.Component {
           };
         if (this.props.id === this.props.selectedNoteId) {
             return (
-                <Segment clearing tertiary onClick={this.handleClick}>
+                <Segment clearing secondary onClick={this.handleClick}>
                     <Header floated='left' as='h6'>{this.props.title}</Header> 
                     <Button onClick={this.handleDeleteClick} icon style={inlineStyle.button}>
                         <Icon name='trash alternate' className="delete"/>                
