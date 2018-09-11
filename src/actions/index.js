@@ -20,9 +20,9 @@ export const getNotes = () => {
     }
 }
 
-export const createNote = () => {
+export const createNote = (data) => {
     return dispatch => {
-        NotesAdapter.createNote()
+        NotesAdapter.createNote(data)
             .then(note => {
                 dispatch({
                     type: CREATE_NOTE,

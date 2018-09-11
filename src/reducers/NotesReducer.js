@@ -8,7 +8,7 @@ export default (state = {
                 ...state,              
                 notes: action.notes
             }
-        case 'CREATE_NOTE':
+        case 'CREATE_NOTE':            
             return {
                 ...state,
                 selectedNote: action.note

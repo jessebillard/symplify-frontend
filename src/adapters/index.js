@@ -10,10 +10,10 @@ export class NotesAdapter {
     static createNote(data) {
         const options = {        
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },                
-            body: JSON.stringify(data)
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },                
+            body: data
             
         }
         return fetch(`${baseURL}/notes`, options).then(resp => resp.json())
