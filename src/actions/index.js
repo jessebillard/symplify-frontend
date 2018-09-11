@@ -2,7 +2,7 @@ import {
     GET_NOTES,
     CREATE_NOTE,
     UPDATE_NOTE,
-    DELETE_NOTES,
+    DELETE_NOTE,
     SELECT_NOTE,
     EDIT_NOTE
 } from './types'
@@ -44,13 +44,14 @@ export const updateNote = () => {
     }
 }
 
-export const deleteNote = () => {
+export const deleteNote = (id) => {
+    // debugger;
     return dispatch => {
-        NotesAdapter.deleteNote()
-            .then(note => {
+        NotesAdapter.deleteNote(id)
+            .then(deletedNoteId => {
                 dispatch({
-                    type: DELETE_NOTES,
-                    note
+                    type: DELETE_NOTE,
+                    deletedNoteId
                 })
             })
     }

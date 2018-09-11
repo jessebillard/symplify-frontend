@@ -85,6 +85,11 @@ class NoteEditor extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    if (!state.selectedNote) {
+        return {
+            selectedNoteContent: ''
+        }
+    }
     return {
         selectedNoteContent: state.selectedNote.content
     }
