@@ -64,17 +64,20 @@ class NoteList extends React.Component {
                     <Input icon='search' onChange={this.handleSearch} placeholder='Search...' />
                     <Button icon style={inlineStyle.button} onClick={this.openModal}>
                         <Icon name='plus' />
-                    </Button>                   
-                    {this.props.notes.map((note, index) => {
-                        if (this.state.searchInput) {
-                            if (note.title.toLowerCase().includes(this.state.searchInput.toLowerCase())) {                                
+                    </Button>   
+                    <div className="list">
+                        {this.props.notes.map((note, index) => {
+                            if (this.state.searchInput) {
+                                if (note.title.toLowerCase().includes(this.state.searchInput.toLowerCase())) {                                
+                                    return <Note key={index} id={note.id} title={note.title} content={note.content}/>
+                                }
+                            } else {
                                 return <Note key={index} id={note.id} title={note.title} content={note.content}/>
                             }
-                        } else {
-                            return <Note key={index} id={note.id} title={note.title} content={note.content}/>
                         }
-                    }
-                    )}                                        
+                        )}                                                                
+                    </div>
+                                 
                 </div>
             </div>
         )
