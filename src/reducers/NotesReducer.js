@@ -13,19 +13,17 @@ export default (state = {
                 notes: [action.note, ...state.notes],
                 selectedNote: action.note
             }
-        case 'UPDATE_NOTE':
-            // console.log(action.note)
+        case 'UPDATE_NOTE':            
+            const noteToUpdate = state.notes.find(note => note.id === parseInt(action.note.id))
+            const index = state.notes.indexOf(noteToUpdate)
             const updatedNotes = state.notes.filter(note => note.id !== parseInt(action.note.id))
-            // console.log("update", updatedNotes)
-            updatedNotes.unshift(action.note)
+            updatedNotes.splice(index, 0, action.note)
             return {
                 ...state,
                 notes: updatedNotes          
             }
         case 'DELETE_NOTE':
-            // most likely need to change this filter method if user selects more than 1 note to delete            
-            // debugger
-            console.log("delete", action.deletedNoteId)
+
             const filteredNotes = state.notes.filter(note => note.id !== parseInt(action.deletedNoteId.id))
             
             if (state.selectedNote.id === parseInt(action.deletedNoteId.id)) {
