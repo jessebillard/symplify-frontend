@@ -41,6 +41,10 @@ delete {
   float: right;
 }
 
+#title {
+  margin: 1rem;
+}
+
 /* .delete-note {
   margin-left: 25px;
 } */

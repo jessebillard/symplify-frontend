@@ -24,26 +24,33 @@ class NoteEditor extends React.Component {
     }
 
     render() {
+        const modules = {
+            toolbar: [
+              [{ 'header': [1, 2, 3, false] }],
+              ['bold', 'italic', 'underline','strike', 'blockquote'],
+              [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+              ['link', 'image'],
+              ['clean']
+            ],
+          }
+        
+          const formats = {formats: [
+            'header',
+            'bold', 'italic', 'underline', 'strike', 'blockquote',
+            'list', 'bullet', 'indent',
+            'link', 'image'
+          ]}
         return (
             <div>
-                {/* <button onClick={this.onBoldClick}><b>B</b></button>                
-                <button onClick={this.onItalicClick}><em>I</em></button>
-                <button onClick={this.onUnderlineClick}>U</button> */}
-                <div className={classNames('col', 'right')}>
-                    {/* <h1>Editor</h1> */}
-                    {/* <Editor 
-                        editorState={this.state.editorState} 
-                        onChange={this.onChange}
-                        handleKeyCommand={this.handleKeyCommand}
-                    /> */}
+                <div className={classNames('col', 'right')}>     
                     <ReactQuill 
                         theme='snow'
                         onChange={this.handleChange}                        
                         value={this.props.selectedNoteContent}
-                        modules={Editor.modules}
-                        formats={Editor.formats}
+                        modules={modules}
+                        formats={formats}
                         bounds={'.app'}
-                        placeholder='type yo stuff here foo'
+                        placeholder='Enter text here...'
                     />
                 </div>
             </div>

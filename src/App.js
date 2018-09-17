@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Symplify</h1>
+        <h1 id="title">Symplify</h1>
         <div className="grid">          
           <NoteList />
           <NoteEditor />
