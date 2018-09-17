@@ -66,20 +66,20 @@ class NoteList extends React.Component {
     getItemStyle = (isDragging, draggableStyle) => ({
         // some basic styles to make the items look a bit nicer
         userSelect: 'none',
-        // padding: grid * 2,
+        padding: 10,
         // margin: `0 0 ${grid}px 0`,
       
         // change background colour if dragging
-        background: isDragging ? 'lightgreen' : 'grey',
+        // background: isDragging ? 'lightgreen' : 'white',
       
         // styles we need to apply on draggables
         ...draggableStyle,
       });
 
     getListStyle = isDraggingOver => ({
-        background: isDraggingOver ? 'lightblue' : 'lightgrey',
+        // background: isDraggingOver ? 'lightblue' : 'white',
         // padding: grid,
-        width: 250,
+        // width: 250,
       });
 
     render() {        
