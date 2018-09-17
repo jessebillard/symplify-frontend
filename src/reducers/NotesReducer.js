@@ -50,6 +50,12 @@ export default (state = {
                 ...state,
                 selectedNote: newNote
             }
+        case 'UPDATE_LIST_ORDER':            
+            return {
+                ...state,
+                notes: action.notes
+            }
+
         default:
             return state
     }

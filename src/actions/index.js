@@ -4,7 +4,8 @@ import {
     UPDATE_NOTE,
     DELETE_NOTE,
     SELECT_NOTE,
-    EDIT_NOTE
+    EDIT_NOTE,
+    UPDATE_LIST_ORDER
 } from './types'
 import { NotesAdapter } from '../adapters/index'
 
@@ -67,5 +68,12 @@ export const editNote = (content) => {
     return {
         type: EDIT_NOTE,
         content
+    }
+}
+
+export const updateListOrder = (notes) => {
+    return {
+        type: UPDATE_LIST_ORDER,
+        notes
     }
 }
