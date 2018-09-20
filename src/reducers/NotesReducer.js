@@ -14,9 +14,9 @@ export default (state = {
                 selectedNote: action.note
             }
         case 'UPDATE_NOTE':            
-            const noteToUpdate = state.notes.find(note => note.id === parseInt(action.note.id))
+            const noteToUpdate = state.notes.find(note => note.id === parseInt(action.note.id, 10))
             const index = state.notes.indexOf(noteToUpdate)
-            const updatedNotes = state.notes.filter(note => note.id !== parseInt(action.note.id))
+            const updatedNotes = state.notes.filter(note => note.id !== parseInt(action.note.id, 10))
             updatedNotes.splice(index, 0, action.note)
             return {
                 ...state,
@@ -24,9 +24,9 @@ export default (state = {
             }
         case 'DELETE_NOTE':
 
-            const filteredNotes = state.notes.filter(note => note.id !== parseInt(action.deletedNoteId.id))
+            const filteredNotes = state.notes.filter(note => note.id !== parseInt(action.deletedNoteId.id, 10))
             
-            if (state.selectedNote.id === parseInt(action.deletedNoteId.id)) {
+            if (state.selectedNote.id === parseInt(action.deletedNoteId.id, 10)) {
                 return {
                     notes: filteredNotes,
                     selectedNote: ''

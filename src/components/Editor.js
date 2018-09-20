@@ -1,17 +1,14 @@
 import React from 'react'
-import { Editor, EditorState, RichUtils } from 'draft-js'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { editNote, updateNote } from '../actions/index'
-import debounce from 'lodash/debounce';
 
 class NoteEditor extends React.Component {
     constructor() {
         super()
-        this.state = {
-            // editorState: EditorState.createEmpty()
+        this.state = {            
             editorHTML: ''
         }
     }
@@ -34,12 +31,12 @@ class NoteEditor extends React.Component {
             ],
           }
         
-          const formats = {formats: [
-            'header',
-            'bold', 'italic', 'underline', 'strike', 'blockquote',
-            'list', 'bullet', 'indent',
-            'link', 'image'
-          ]}
+        // const formats = {formats: [
+        // 'header',
+        // 'bold', 'italic', 'underline', 'strike', 'blockquote',
+        // 'list', 'bullet', 'indent',
+        // 'link', 'image'
+        // ]}
         return (
             <div>
                 <div className={classNames('col', 'right')}>     
@@ -48,7 +45,7 @@ class NoteEditor extends React.Component {
                         onChange={this.handleChange}                        
                         value={this.props.selectedNoteContent}
                         modules={modules}
-                        formats={formats}
+                        // formats={formats}
                         bounds={'.app'}
                         placeholder='Enter text here...'
                     />

@@ -129,26 +129,24 @@ class NoteList extends React.Component {
                                                                         <Note key={index} id={note.id} title={note.title} content={note.content}/>
                                                                     </div>
                                                                 )}
-
                                                             </Draggable>
                                                 }
                                             } else {
                                                 return <Draggable key={note.id} draggableId={note.id} index={index}>
-                                                                {(provided, snapshot) => (
-                                                                    <div
-                                                                        ref={provided.innerRef}
-                                                                        {...provided.draggableProps}
-                                                                        {...provided.dragHandleProps}
-                                                                        style={this.getItemStyle(
-                                                                            snapshot.isDragging,
-                                                                            provided.draggableProps.style
-                                                                          )}
-                                                                    >
-                                                                        <Note key={index} id={note.id} title={note.title} content={note.content}/>
-                                                                    </div>
-                                                                )}
-
-                                                            </Draggable>
+                                                            {(provided, snapshot) => (
+                                                                <div
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    {...provided.dragHandleProps}
+                                                                    style={this.getItemStyle(
+                                                                        snapshot.isDragging,
+                                                                        provided.draggableProps.style
+                                                                        )}
+                                                                >
+                                                                    <Note key={index} id={note.id} title={note.title} content={note.content}/>
+                                                                </div>
+                                                            )}
+                                                        </Draggable>
                                             }
                                         }
                                         )}                                                                
