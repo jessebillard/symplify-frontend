@@ -82,29 +82,9 @@ class NoteList extends React.Component {
         // width: 250,
       });
 
-    render() {        
-        const inlineStyle = {
-            button : {
-              float: 'right',              
-            }
-          };
+    renderNotes = () => {
         return (
-            <div>
-                <Modal dimmer={"inverted"} centered size="mini" open={this.state.modalOpen}>                                    
-                    <Modal.Header>Give This Note a Title!</Modal.Header>
-                    <Modal.Content>
-                        <Input focus onChange={this.newNoteTitle} placeholder='title...'/>
-                    </Modal.Content>
-                    <Modal.Actions>                                    
-                        <Button positive onClick={this.closeModal} icon='checkmark' labelPosition='right' content='Got it!' />
-                    </Modal.Actions>                                    
-                </Modal> 
-                <div className={classNames('col', 'left')}>                    
-                    <Input icon='search' onChange={this.handleSearch} placeholder='Search...' />
-                    <Button icon style={inlineStyle.button} onClick={this.openModal}>
-                        <Icon name='plus' />
-                    </Button>   
-                    <DragDropContext onDragEnd={this.onDragEnd}>
+            <DragDropContext onDragEnd={this.onDragEnd}>
                         <Droppable droppableId="droppable">
                             {(provided, snapshot) => (
                                 <div
@@ -156,7 +136,32 @@ class NoteList extends React.Component {
                             )}
                         </Droppable>
                     </DragDropContext>
-                                 
+        )
+    }    
+
+    render() {        
+        const inlineStyle = {
+            button : {
+              float: 'right',              
+            }
+          };        
+        return (
+            <div>
+                <Modal dimmer={"inverted"} centered size="mini" open={this.state.modalOpen}>                                    
+                    <Modal.Header>Give This Note a Title!</Modal.Header>
+                    <Modal.Content>
+                        <Input focus onChange={this.newNoteTitle} placeholder='title...'/>
+                    </Modal.Content>
+                    <Modal.Actions>                                    
+                        <Button positive onClick={this.closeModal} icon='checkmark' labelPosition='right' content='Got it!' />
+                    </Modal.Actions>                                    
+                </Modal> 
+                <div className={classNames('col', 'left')}>                    
+                    <Input icon='search' onChange={this.handleSearch} placeholder='Search...' />
+                    <Button icon style={inlineStyle.button} onClick={this.openModal}>
+                        <Icon name='plus' />
+                    </Button>   
+                    {this.props.notes.length ? this.renderNotes() : <h4 style={{textAlign: 'center'}}>click plus to add note...</h4>}                                 
                 </div>
             </div>
         )
