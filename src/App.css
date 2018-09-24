@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+.grid {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
 .col {  
   float: left;
   padding: 10px;
@@ -11,6 +16,11 @@
 
 .left {
   width: 25%;
+  padding: 5px;
+}
+
+.right {
+  width: 75%;
   padding: 5px;
 }
 
@@ -26,11 +36,6 @@
 
 .ql-editor {
   min-height: 40rem;
-}
-
-.right {
-  width: 75%;
-  padding: 5px;
 }
 
 #new-note-button {
