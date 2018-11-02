@@ -85,57 +85,57 @@ class NoteList extends React.Component {
     renderNotes = () => {
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
-                        <Droppable droppableId="droppable">
-                            {(provided, snapshot) => (
-                                <div
-                                    ref={provided.innerRef}
-                                    style={this.getListStyle(snapshot.isDraggingOver)}
-                                >
-                                    <div className="list">
-                                        {this.props.notes.map((note, index) => {
-                                            if (this.state.searchInput) {
-                                                if (note.title.toLowerCase().includes(this.state.searchInput.toLowerCase())) {                                
-                                                    return <Draggable key={note.id} draggableId={note.id} index={index}>
-                                                                {(provided, snapshot) => (
-                                                                    <div
-                                                                        ref={provided.innerRef}
-                                                                        {...provided.draggableProps}
-                                                                        {...provided.dragHandleProps}
-                                                                        style={this.getItemStyle(
-                                                                            snapshot.isDragging,
-                                                                            provided.draggableProps.style
-                                                                          )}
-                                                                    >
-                                                                        <Note key={index} id={note.id} title={note.title} content={note.content}/>
-                                                                    </div>
-                                                                )}
-                                                            </Draggable>
-                                                }
-                                            } else {
-                                                return <Draggable key={note.id} draggableId={note.id} index={index}>
-                                                            {(provided, snapshot) => (
-                                                                <div
-                                                                    ref={provided.innerRef}
-                                                                    {...provided.draggableProps}
-                                                                    {...provided.dragHandleProps}
-                                                                    style={this.getItemStyle(
-                                                                        snapshot.isDragging,
-                                                                        provided.draggableProps.style
-                                                                        )}
-                                                                >
-                                                                    <Note key={index} id={note.id} title={note.title} content={note.content}/>
-                                                                </div>
-                                                            )}
-                                                        </Draggable>
-                                            }
+                <Droppable droppableId="droppable">
+                    {(provided, snapshot) => (
+                        <div
+                            ref={provided.innerRef}
+                            style={this.getListStyle(snapshot.isDraggingOver)}
+                        >
+                            <div className="list">
+                                {this.props.notes.map((note, index) => {
+                                    if (this.state.searchInput) {
+                                        if (note.title.toLowerCase().includes(this.state.searchInput.toLowerCase())) {                                
+                                            return <Draggable key={note.id} draggableId={note.id} index={index}>
+                                                        {(provided, snapshot) => (
+                                                            <div
+                                                                ref={provided.innerRef}
+                                                                {...provided.draggableProps}
+                                                                {...provided.dragHandleProps}
+                                                                style={this.getItemStyle(
+                                                                    snapshot.isDragging,
+                                                                    provided.draggableProps.style
+                                                                    )}
+                                                            >
+                                                                <Note key={index} id={note.id} title={note.title} content={note.content}/>
+                                                            </div>
+                                                        )}
+                                                    </Draggable>
                                         }
-                                        )}                                                                
-                                    </div>
+                                    } else {
+                                        return <Draggable key={note.id} draggableId={note.id} index={index}>
+                                                    {(provided, snapshot) => (
+                                                        <div
+                                                            ref={provided.innerRef}
+                                                            {...provided.draggableProps}
+                                                            {...provided.dragHandleProps}
+                                                            style={this.getItemStyle(
+                                                                snapshot.isDragging,
+                                                                provided.draggableProps.style
+                                                                )}
+                                                        >
+                                                            <Note key={index} id={note.id} title={note.title} content={note.content}/>
+                                                        </div>
+                                                    )}
+                                                </Draggable>
+                                    }
+                                }
+                                )}                                                                
+                            </div>
 
-                                </div>
-                            )}
-                        </Droppable>
-                    </DragDropContext>
+                        </div>
+                    )}
+                </Droppable>
+            </DragDropContext>
         )
     }    
 
@@ -161,7 +161,7 @@ class NoteList extends React.Component {
                     <Button icon style={inlineStyle.button} onClick={this.openModal}>
                         <Icon name='plus' />
                     </Button>   
-                    {this.props.notes.length ? this.renderNotes() : <h4 style={{textAlign: 'center'}}>click plus to add note...</h4>}                                 
+                    {this.props.notes.length ? this.renderNotes() : <h4 style={{textAlign: 'center'}}>click plus to add a note...</h4>}                                 
                 </div>
             </div>
         )
